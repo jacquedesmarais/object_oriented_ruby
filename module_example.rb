@@ -1,9 +1,4 @@
-class Vehicle
-    def initialize
-    @speed = 0
-    @direction = 'north' # not dynamic so direction is hard coded in
-  end
-
+module Movable
   def brake
     @speed = 0
   end
@@ -17,27 +12,22 @@ class Vehicle
   end
 end
 
-class Car < Vehicle
+class Vehicle
   def initialize(input_options)
-    super() #paases input options to the super class
-    @fuel = input_options[:fuel]
-    @make = input_options[:make]
-    @model = input_options[:model]
+    @speed = 0
+    @direction = 'north'
   end
+end
 
+class Car < Vehicle
+  include Movable
   def honk_horn
     puts "Beeeeeeep!"
   end
 end
 
 class Bike < Vehicle
-  def initialize(input_options)
-    super()
-    @gear = input_options[:gear]
-    @type = input_options[:type]
-    @weight = input_options[:weight]
-  end
-
+  include Movable
   def ring_bell
     puts "Ring ring!"
   end
@@ -60,4 +50,3 @@ car.honk_horn
 p car
 bike.ring_bell
 p bike
-
