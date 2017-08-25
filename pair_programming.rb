@@ -114,22 +114,26 @@
 # end
 
 # Question 4
-students = []
-count = 1
+# puts "How many students do you have?"
+# student_count = gets.chomp.to_i
 
-4.times do
-  puts "Enter the " + count.to_s + " students name:"
-  name = gets.chomp
-  count += 1
-  students << name
-end
+# students = []
+# count = 1
 
-students = students.each_slice(2).to_a
+# student_count.times do
+#   puts "Enter the " + count.to_s + " students name:"
+#   name = gets.chomp
+#   count += 1
+#   students << name
+# end
 
-p students
+# students = students.each_slice(2).to_a
 
-students.each do ||
-p "Group: "
+# students.each do |a, b|
+#   puts "Group: #{a} + #{b}"
+# end
+
+
 
 # ----------------------------------------
 
@@ -140,54 +144,54 @@ p "Group: "
 # 5. CHALLENGE: Change the program to give the user the choice at the end of the game to retry the cards they got wrong.
 # 6. CHALLENGE: Change the interface with better prompts, ASCII art, etc. Be as creative as you'd like!
 
-# class Card < Deck
+class Card
 
-#   def initialize(input_options)
-#     @question = input_options[:question]
-#     @answer = input_options[:answer]
-#   end
+  attr_reader :question, :answer
 
-#   def answer
+  def initialize(card_content)
+    @question = card_content[:question]
+    @answer = card_content[:answer]
+  end
+end
 
-#   end
+class Deck < Card
 
-# end
+  attr_reader :card_array
+  attr_writer :card_array
 
-# class Deck
-#   attr_reader :remaining_cards
-#   attr_writer :remaining_cards
+  def initialize(trivia_data)
+    @card_array = []
+    trivia_data.each do |question, answer|
+      @card_array << Card.new(question: question, answer: answer)
+    end
+  end
 
-#   def initialize(trivia_data)
-#     super
-#     @trivia_data = trivia_data
-#   end
+  def remaining_cards
+    card_array.length
+  end
 
-#   def draw_card
-#     input_options = trivia_data
-#     card = Card.new(@question)
+  def draw_card
+    card = card_array[0]
+    card_array.delete_at(0)
+    card
+  end
+end
 
-#   end
+trivia_data = {
+  "What is the capital of Illinois?" => "Springfield",
+  "Is Africa a country or a continent?" => "Continent",
+  "Tug of war was once an Olympic event. True or false?" => "True"
+}
 
-#   def remaining_cards
+deck = Deck.new(trivia_data) # deck is an instance of the Deck class
 
-#   end
-# end
-
-# trivia_data = {
-#   "What is the capital of Illinois?" => "Springfield",
-#   "Is Africa a country or a continent?" => "Continent",
-#   "Tug of war was once an Olympic event. True or false?" => "True"
-# }
-
-# deck = Deck.new(trivia_data) # deck is an instance of the Deck class
-
-# while deck.remaining_cards > 0
-#   card = deck.draw_card # card is an instance of the Card class
-#   puts card.question
-#   user_answer = gets.chomp
-#   if user_answer.downcase == card.answer.downcase
-#     puts "Correct!"
-#   else
-#     puts "Incorrect!"
-#   end
-# end
+while deck.remaining_cards > 0
+  card = deck.draw_card # card is an instance of the Card class
+  puts card.question
+  user_answer = gets.chomp
+  if user_answer.downcase == card.answer.downcase
+    puts "Correct!"
+  else
+    puts "Incorrect!"
+  end
+end
