@@ -127,10 +127,13 @@
 #   students << name
 # end
 
-# students = students.each_slice(2).to_a
+# p students
+# group_array = students.each_slice(2).to_a
 
-# students.each do |a, b|
-#   puts "Group: #{a} + #{b}"
+# group_array.each do |a, b|
+#   if students.count%2 == 0
+#     puts "Group: #{a} and #{b}"
+#   end
 # end
 
 
@@ -175,6 +178,7 @@ class Deck < Card
     card_array.delete_at(0)
     card
   end
+
 end
 
 trivia_data = {
@@ -185,13 +189,27 @@ trivia_data = {
 
 deck = Deck.new(trivia_data) # deck is an instance of the Deck class
 
+multiple_choice = ["Pizza", "Champagne", "Robin", "State", "False", "Dough", "Rasin", "Blue"]
+
 while deck.remaining_cards > 0
   card = deck.draw_card # card is an instance of the Card class
   puts card.question
+  puts "#{multiple_choice[rand(0...multiple_choice.count)]}, #{card.answer}, #{multiple_choice[rand(0...multiple_choice.count)]}"
   user_answer = gets.chomp
   if user_answer.downcase == card.answer.downcase
     puts "Correct!"
   else
     puts "Incorrect!"
+    1.times do
+      if user_answer.downcase != card.answer.downcase
+        puts "Please try again."
+        user_answer = gets.chomp
+          if user_answer.downcase == card.answer.downcase
+            puts "Correct!"
+          else
+          puts "Incorrect!"
+          end
+      end
+    end
   end
 end
