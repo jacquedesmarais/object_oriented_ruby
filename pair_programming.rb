@@ -1,140 +1,140 @@
 # Question 1a
-# p "Enter your favorite food:"
-# foods = []
+p "Enter your favorite food:"
+foods = []
 
-# 5.times do
-#   p "Enter a food:"
-#   input = gets.chomp
-#   foods << input
-# end
+5.times do
+  p "Enter a food:"
+  input = gets.chomp
+  foods << input
+end
 
-# p foods
+p foods
 
 # Question 1b
-# count = 1
-# foods.each do |food|
-#   puts count.to_s + ". I love " + food
-#   count += 1
-# end
+count = 1
+foods.each do |food|
+  puts count.to_s + ". I love " + food
+  count += 1
+end
 
 # Question 2
-# count = 0
+count = 0
 
-# while count <= 10
-#   p count
-#   count += 1
-# end
+while count <= 10
+  p count
+  count += 1
+end
 
 # Question 2d
-# result = false
-# unless result
-#   puts "HELLO!"
-# end 
+result = false
+unless result
+  puts "HELLO!"
+end 
 
 # Quesion 2e
-# recipes = 0
-# languages = 0
-# can_make_crepes = false
-# can_speak_french = false
+recipes = 0
+languages = 0
+can_make_crepes = false
+can_speak_french = false
 
-# puts "Sam, how many recipes can you cook?"
-# recipes = gets.chomp.to_i
+puts "Sam, how many recipes can you cook?"
+recipes = gets.chomp.to_i
 
-# puts "Sally, how many languages can you speak?"
-# languages = gets.chomp.to_i
+puts "Sally, how many languages can you speak?"
+languages = gets.chomp.to_i
 
-# if recipes > 10 && languages > 5
-#   puts "They should date."
-# end
+if recipes > 10 && languages > 5
+  puts "They should date."
+end
 
-# puts "Sam, can you make crepes?"
-# can_make_crepes = gets.chomp
+puts "Sam, can you make crepes?"
+can_make_crepes = gets.chomp
 
-# puts "Sally, can you speak french?"
-# can_speak_french = gets.chomp
+puts "Sally, can you speak french?"
+can_speak_french = gets.chomp
 
 
-# if can_make_crepes && can_speak_french
-#   puts "They should marry."
-# end
+if can_make_crepes && can_speak_french
+  puts "They should marry."
+end
 
 # Question 3 + 5
-# def is_email_valid?(email)
-#   if email.include?(".com") && email.include?("@")
-#     return true 
-#   end
-# end
+def is_email_valid?(email)
+  if email.include?(".com") && email.include?("@")
+    return true 
+  end
+end
 
 
-# accounts = []
+accounts = []
 
-# 2.times do
-#   person = {}
-#   valid = false
-#   puts "Enter your first name:"
-#   person[:first_name] = gets.chomp.capitalize
-#   puts "Enter last name:"
-#   person[:last_name] = gets.chomp.capitalize
-#   person[:acct] = Random.rand(1000000000..9999999999)
-#   accounts << person
+2.times do
+  person = {}
+  valid = false
+  puts "Enter your first name:"
+  person[:first_name] = gets.chomp.capitalize
+  puts "Enter last name:"
+  person[:last_name] = gets.chomp.capitalize
+  person[:acct] = Random.rand(1000000000..9999999999)
+  accounts << person
 
-#   until valid == true
-#     puts "Enter email:"
-#     email = gets.chomp
-#     if is_email_valid?(email)
-#       person[:email] = email
-#       valid = true
-#     else
-#       puts "Invalid email, please try again."
-#       valid = false
-#     end
-#   end
-# end
+  until valid == true
+    puts "Enter email:"
+    email = gets.chomp
+    if is_email_valid?(email)
+      person[:email] = email
+      valid = true
+    else
+      puts "Invalid email, please try again."
+      valid = false
+    end
+  end
+end
 
-# p accounts
+p accounts
 
-# bank_collection.each do |hash|
-#   hash.each do |key, value|
-#     p "#{k.upcase}: #{v}"
-#   end
-# end
+bank_collection.each do |hash|
+  hash.each do |key, value|
+    p "#{k.upcase}: #{v}"
+  end
+end
 
-# puts "Enter your account number to recieve your information:"
-# account_number = gets.chomp.to_i
+puts "Enter your account number to recieve your information:"
+account_number = gets.chomp.to_i
 
-# accounts.each do |hash|
-#   hash.each do |key, value|
-#     if hash.has_value?(account_number)
-#       p "#{key.upcase}: #{value}"
-#     else
-#       p "user not found."
-#       break
-#     end
-#   end
-# end
+accounts.each do |hash|
+  hash.each do |key, value|
+    if hash.has_value?(account_number)
+      p "#{key.upcase}: #{value}"
+    else
+      p "user not found."
+      break
+    end
+  end
+end
 
 # Question 4
-# puts "How many students do you have?"
-# student_count = gets.chomp.to_i
+puts "How many students do you have?"
+student_count = gets.chomp.to_i
 
-# students = []
-# count = 1
+students = []
+count = 1
 
-# student_count.times do
-#   puts "Enter the " + count.to_s + " students name:"
-#   name = gets.chomp
-#   count += 1
-#   students << name
-# end
+student_count.times do
+  puts "Enter the " + count.to_s + " students name:"
+  name = gets.chomp
+  count += 1
+  students << name
+end
 
-# p students
-# group_array = students.each_slice(2).to_a
+p students
+group_array = students.each_slice(2).to_a
 
-# group_array.each do |a, b|
-#   if students.count%2 == 0
-#     puts "Group: #{a} and #{b}"
-#   end
-# end
+group_array.each do |a, b|
+  if students.count%2 == 0
+    puts "Group: #{a} and #{b}"
+  end
+end
 
 
 
@@ -157,7 +157,7 @@ class Card
   end
 end
 
-class Deck < Card
+class Deck
 
   attr_reader :card_array
   attr_writer :card_array
@@ -187,29 +187,51 @@ trivia_data = {
   "Tug of war was once an Olympic event. True or false?" => "True"
 }
 
-deck = Deck.new(trivia_data) # deck is an instance of the Deck class
+play_game = true
 
-multiple_choice = ["Pizza", "Champagne", "Robin", "State", "False", "Dough", "Rasin", "Blue"]
+while play_game != false
 
-while deck.remaining_cards > 0
-  card = deck.draw_card # card is an instance of the Card class
-  puts card.question
-  puts "#{multiple_choice[rand(0...multiple_choice.count)]}, #{card.answer}, #{multiple_choice[rand(0...multiple_choice.count)]}"
-  user_answer = gets.chomp
-  if user_answer.downcase == card.answer.downcase
-    puts "Correct!"
-  else
-    puts "Incorrect!"
-    1.times do
-      if user_answer.downcase != card.answer.downcase
-        puts "Please try again."
-        user_answer = gets.chomp
-          if user_answer.downcase == card.answer.downcase
-            puts "Correct!"
-          else
-          puts "Incorrect!"
-          end
+  deck = Deck.new(trivia_data) # deck is an instance of the Deck class
+
+  multiple_choice = ["Pizza", "Champagne", "Robin", "State", "False", "Dough", "Rasin", "Blue"]
+
+  while deck.remaining_cards > 0
+    score = 1
+    card = deck.draw_card # card is an instance of the Card class
+    puts card.question
+    puts "#{multiple_choice[rand(0...multiple_choice.count)]}, #{card.answer}, #{multiple_choice[rand(0...multiple_choice.count)]}"
+    user_answer = gets.chomp
+    if user_answer.downcase == card.answer.downcase
+      trivia_data.delete(card.question)
+      score += 1
+      puts "Correct!"
+    else
+      puts "Incorrect!"
+      1.times do
+        if user_answer.downcase != card.answer.downcase
+          puts "Please try again."
+          user_answer = gets.chomp
+            if user_answer.downcase == card.answer.downcase
+              puts "Correct!"
+            else
+            puts "Incorrect!"
+            end
+        end
       end
     end
+  end
+  puts "You got a score of #{score} out of 3!"
+
+  if score != 3
+    puts "Would you like to retry the questions you got wrong?"
+    puts "Enter yes if so OR enter no if you'd rather end the game."
+    user_input = gets.chomp.downcase
+    if user_input == "yes" || user_input == "y"
+      play_game = true
+    else user_input == "no" || user_input == "n"
+      play_game = false
+    end
+  else user_input == "no" || user_input == "n"
+    play_game = false
   end
 end
